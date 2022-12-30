@@ -1,0 +1,33 @@
+{
+  "name": "startpage",
+  "version": "1.0.0",
+  "description": "Startpage based off a reddit mockup",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "author": "Sebl33th4x0r",
+  "license": "ISC",
+  "dependencies": {
+    "bufferutil": "^4.0.2",
+    "events": "^3.2.0",
+    "eventss": "^1.3.4",
+    "express": "^4.17.1",
+    "externalip": "^1.0.2",
+    "forever": "^4.0.1",
+    "geoip-lite": "^1.4.2",
+    "geolocation": "^0.0.0",
+    "node-ip": "^0.1.2",
+    "os-utils": "^0.0.14",
+    "public-ip": "^4.0.1",
+    "qs": "^6.9.4",
+    "socket.io": "^2.3.0",
+    "sunrise-sunset-js": "^2.2.1",
+    "utf": "^1.0.0",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

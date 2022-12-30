@@ -1,0 +1,58 @@
+$background : black;
+
+@import "./leftbar/leftbar";
+
+#leftbar{
+    background-color: $background;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    @media screen and (max-width: 1266px){
+        display: none;
+    }
+}
+
+.thinboy{
+    height: 90%;
+    width: 300px;
+}
+
+
+#centerbox{
+    width: 45%;
+    height: 80%;
+    background-color: $background;
+    
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap; 
+    align-content: space-between;
+
+}
+
+#linkbox{
+    border: white;
+    border-width: 5px;
+    width: 100vw;
+    height: 50vh;
+}
+
+#timebox{
+    border: white;
+    border-width: 5px;
+    width: 100vw;
+    //height: 35vh;
+    
+    font-size: 50px;
+    h1{
+        text-align: center;
+    }
+  }
+
+#rightbar{
+    background: $background;
+    @media screen and (max-width: 1266px){
+        display: none;
+    }
+}

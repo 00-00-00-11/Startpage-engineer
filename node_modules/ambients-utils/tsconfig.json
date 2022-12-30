@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"module": "esnext",
+		"moduleResolution": "node",
+		"strict": true,
+		"experimentalDecorators": true,
+		"target": "es2018",
+		"declaration": true,
+		"outDir": "lib-esm"
+	},
+	"include": [
+		"src"
+	],
+	"exclude": [
+		"src/test.ts"
+	]
+}

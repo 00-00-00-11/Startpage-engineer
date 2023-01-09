@@ -1,6 +1,8 @@
 $background : black;
+$maxerinowidth: 1000px;
 
-@import "./leftbar/leftbar";
+@import "./leftbar/leftbar.scss";
+@import "./rightbar/rightbar.scss";
 
 #leftbar{
     background-color: $background;
@@ -8,7 +10,7 @@ $background : black;
     justify-content: center;
     flex-wrap: wrap;
     align-content: flex-start;
-    @media screen and (max-width: 1266px){
+    @media screen and (max-width: $maxerinowidth){
         display: none;
     }
 }
@@ -16,6 +18,10 @@ $background : black;
 .thinboy{
     height: 90%;
     width: 300px;
+}
+.fatboy{
+    height: 90%;
+    width: 500px;
 }
 
 
@@ -52,7 +58,7 @@ $background : black;
 
 #rightbar{
     background: $background;
-    @media screen and (max-width: 1266px){
+    @media screen and (max-width: $maxerinowidth){
         display: none;
     }
 }

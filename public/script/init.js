@@ -62,11 +62,19 @@ socket.on("sunset-sunrise",(value)=>{
   if(SunriseSunsetListed == false){
       sunrise = new Date(value[1]); sunset = new Date(value[0]);
       console.log(value[1]);
-      document.getElementById("sunset-time").innerHTML +=  sunset.getHours() + ":" + sunset.getMinutes() + ":" + sunset.getSeconds();
-      document.getElementById("sunrise-time").innerHTML +=  sunrise.getHours() + ":" + sunrise.getMinutes() + ":" + sunrise.getSeconds();
+      document.getElementById("sunset-time").innerHTML +=  sunset.getHours() + ":" + sunset.getMinutes();
+      document.getElementById("sunrise-time").innerHTML +=  sunrise.getHours() + ":" + sunrise.getMinutes();
       SunriseSunsetListed = true;
       initCPS(today,sunset,sunrise);
   } 
+});
+socket.on("comic_url", (url) => {
+  if(url != null) {
+    //document.getElementById("xkcd").attributes.src = "https:" + url;
+    document.getElementById("xkcd").attributes.getNamedItem("src").value = "https:" + url;
+    document.getElementById("xkcd_url").attributes.getNamedItem("href").value = "https:" + url;
+    console.log(document.getElementById("xkcd").attributes.getNamedItem("src").value)
+  }
 });
 
 

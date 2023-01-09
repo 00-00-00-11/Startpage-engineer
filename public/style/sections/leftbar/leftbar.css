@@ -50,7 +50,7 @@
   background-color: white; }
 
 #cpu {
-  height: 335px;
+  height: 288px;
   overflow: visible;
   flex-direction: column;
   justify-content: space-around; }
@@ -122,21 +122,22 @@
   width: 32px;
   position: absolute; }
 
-#CPS {
-  height: 125px;
-  overflow: hidden;
-  position: relative; }
-
 #chart_div {
-  width: 300px;
-  height: 210px;
-  display: flex; }
+  width: 280px;
+  height: 190px;
+  display: flex;
+  z-index: 99; }
 
 #chartBorderParent {
-  width: 100%;
+  width: 281px;
   overflow: visible;
-  height: 210px;
-  border-width: 4px; }
+  height: 192px;
+  border-width: 1px;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  align-content: center; }
 
 .center {
   align-items: center;
@@ -146,22 +147,23 @@
 
 .chartBorder {
   display: flex;
-  height: 210px;
-  width: 300px; }
+  overflow: visible;
+  border-width: 4px;
+  height: 214px;
+  width: 300px;
+  border-style: solid solid solid solid;
+  position: absolute;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  align-content: center; }
 
 #chartBorderBlack {
-  overflow: visible;
-  height: 250px;
-  width: 300px;
-  border-width: 4px;
-  background-color: blue;
-  border-color: blue;
-  border-radius: 15px; }
+  border-color: black;
+  border-radius: 15px;
+  z-index: 101; }
 
 #chartBorderWhite {
-  overflow: visible;
-  height: 250px;
-  width: 300px;
-  border-width: 1px;
   border-color: white;
-  border-radius: 0px; }
+  z-index: 100; }

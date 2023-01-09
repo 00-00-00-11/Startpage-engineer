@@ -18,13 +18,12 @@
     <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src ="http://localhost:5000/socket.io/socket.io.js"> </script>
-    <script src="script/sunrise-sunset.js"></script>
 
 </head>
 
 <body>
 
-    <form autocomplete="off" class="center overlay search-form" id="search-form" spellcheck="false">
+    <form style="z-index: 100000" autocomplete="off" class="center overlay search-form" id="search-form" spellcheck="false">
         <div>
             <input autofocus class="search-input" id="search-input" title="search" type="text">
             <ul class="search-suggestions" id="search-suggestions"></ul>
@@ -54,7 +53,7 @@
                     <div id = "circle-half-bottom" > </div>
                     <div id = "spinning-rec"></div>
                 </div>
-                <div style = " height:60px; flex-direction: column; align-items: center; margin-left: 20px;" >
+                <div style = " height:60px; flex-direction: column; align-items: center; margin-left: 3px;" >
                     <P class="ellipse-suffix"> RUNNING PRECORTEX CHECKS </P>
                     <P class="ellipse-suffix"> BOOT SYSTEMS NOMINAL </P>
                     <P class="ellipse-suffix"> SYSTEMS OPERATIONAL </P>
@@ -64,17 +63,19 @@
 
             <div id="cpu" class="leftbarelem borderunder flex ">
 
-                <p style="margin-bottom: 22px;" class = "spacingAbove"> CORTEX ANALYSIS MODULE</P>
-                <div id = "chartBorderParent" class = "flex borderallround center">
-                    <div id = "chartBorderBlack" class="flex chartBorder borderallround center">
-                        <div id = "chartBorderWhite" class="flex borderallround center chartBorder">
-                            <div id="chart_div" class="flex center" style="width: 100%; height:100%;">
-                            </div>
-                        </div> 
-                    </div>
+                <p style="margin-bottom: 3px;" class = "spacingAbove"> CORTEX ANALYSIS MODULE</p>
+                <div id="chartParentReal" class="center" style="height:100% width:100%">
+                  <div id = "chartBorderWhite" class = "chartBorder ">
+                      <div id = "chartBorderBlack" class="chartBorder ">
+                          <div id = "chartBorderParent" class="chartBorder">
+                              <div id="chart_div" class="flex " style="">
+                              </div>
+                          </div> 
+                      </div>
+                </div>
                 </div>
 
-                <p id ="current-usage" style="margin-top: 21px;"> CURRENT CORTEX PERCENTAGE: </p>
+                <p id ="current-usage" style="margin-top: 3px;"> CURRENT CORTEX PERCENTAGE: </p>
                 <P class = "spacingAbove">CORTEX TYPE: </P>
                 <p id="cpu-type"style="margin-bottom:5px;" class = "spacingAbove "></p>
 
@@ -123,8 +124,8 @@
     
 </body>
 <script type="text/javascript" src="script/init.js"></script>
-<script src="script/tilde.js"></script>
-<script src="script/clock.js"></script>
+<script type="text/javascript" src="script/tilde.js"></script>
+<script type="text/javascript" src="script/clock.js"></script>
 <script type="text/javascript" src="script/charts.js"></script>
 
 </html>

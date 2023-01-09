@@ -36,7 +36,7 @@
 .category-span-in {
   display: flex;
   justify-content: center;
-  -webkit-clip-path: polygon(99% 6%, 99% 68%, 93.5% 93%, 1% 93%, 1% 6%);
+  -webket-clip-path: polygon(99% 6%, 99% 68%, 93.5% 93%, 1% 93%, 1% 6%);
   clip-path: polygon(99% 6%, 99% 68%, 93.5% 93%, 1% 93%, 1% 6%); }
   .category-span-in h1 {
     padding-left: 5%; }
@@ -50,8 +50,10 @@
   background-color: white; }
 
 #cpu {
-  height: 50%;
-  overflow: visible; }
+  height: 288px;
+  overflow: visible;
+  flex-direction: column;
+  justify-content: space-around; }
 
 #status {
   display: flex;
@@ -69,8 +71,8 @@
 
 #circle-half-bottom {
   position: absolute;
-  height: 24px;
   width: 24px;
+  height: 24px;
   border: 24px solid black;
   border-radius: 50%; }
 
@@ -93,16 +95,8 @@
   border-color: #c5c5c5;
   border-width: 1px; }
 
-#cpu {
-  height: 325px;
-  flex-direction: column;
-  justify-content: space-around; }
-
 .spacingAbove {
   margin-top: 3px; }
-
-.spacingBelow {
-  margin-bottom: 3px; }
 
 @keyframes rotate {
   0% {
@@ -120,19 +114,30 @@
 
 #CPS {
   height: 125px;
-  overflow: hidden;
+  overflow: visible;
   position: relative; }
 
-#chartBorderParent {
-  width: 90%;
-  margin-left: 5%;
-  overflow: visible;
-  height: 210px; }
+.celestialBody {
+  height: 32px;
+  width: 32px;
+  position: absolute; }
 
 #chart_div {
-  width: 99%;
-  height: 210px;
-  margin: auto; }
+  width: 280px;
+  height: 190px;
+  display: flex;
+  z-index: 99; }
+
+#chartBorderParent {
+  width: 281px;
+  overflow: visible;
+  height: 192px;
+  border-width: 1px;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  align-content: center; }
 
 .center {
   align-items: center;
@@ -141,19 +146,27 @@
   justify-items: center; }
 
 .chartBorder {
+  display: flex;
+  overflow: visible;
   border-width: 4px;
-  position: absolute; }
-
-#chartBorderWhite {
-  height: 250px;
+  height: 214px;
   width: 300px;
-  border-color: white; }
+  border-style: solid solid solid solid;
+  position: absolute;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  align-content: center; }
 
 #chartBorderBlack {
-  height: 252px;
-  width: 302px;
   border-color: black;
-  border-radius: 15px; }
+  border-radius: 15px;
+  z-index: 101; }
+
+#chartBorderWhite {
+  border-color: white;
+  z-index: 100; }
 
 .rightbarelem {
   width: 100%; }
@@ -180,12 +193,13 @@
   justify-content: center;
   flex-wrap: wrap;
   align-content: flex-start; }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1100px) {
     #leftbar {
       display: none; } }
 .thinboy {
   height: 90%;
-  width: 300px; }
+  width: 300px;
+  flex-shrink: 0; }
 
 .fatboy {
   height: 90%;
@@ -216,6 +230,6 @@
 
 #rightbar {
   background: black; }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1100px) {
     #rightbar {
       display: none; } }

@@ -1,0 +1,18 @@
+.rightbarelem {
+  width: 100%; }
+
+#xkcd {
+  width: 100%;
+  height: auto;
+  filter: invert(100%);
+  flex: 0 1 auto; }
+
+.bordertopbot {
+  border-style: solid none solid none;
+  border-width: 1px;
+  border-color: #c5c5c5; }
+
+#Humor {
+  max-height: 60%;
+  flex-direction: column;
+  overflow: scroll; }

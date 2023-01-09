@@ -1,245 +1,39 @@
-.leftbarelem {
+chartBorderParent {
+  display: flex;
   width: 100%;
-  height: 6%;
-}
-
-#date {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: white;
-  width: 100%;
-  height: 100%;
-}
-
-#date h1 {
-  color: black;
-  margin-left: 0%;
-  font-size: 25px;
-}
-
-#name {
-  width: 100%;
-  height: 6%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-#name h1 {
-  color: white;
-  font-size: 25px;
-  margin-left: 2%;
-}
-
-.category-span-out {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-clip-path: polygon(100% 0, 100% 73%, 94% 100%, 0 100%, 0 0);
-  clip-path: polygon(100% 0, 100% 73%, 94% 100%, 0 100%, 0 0);
-  width: 100%;
-  background-color: white;
-}
-
-.category-span-in {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-clip-path: polygon(99% 6%, 99% 68%, 93.5% 93%, 1% 93%, 1% 6%);
-  clip-path: polygon(99% 6%, 99% 68%, 93.5% 93%, 1% 93%, 1% 6%);
-}
-
-.category-span-in h1 {
-  padding-left: 5%;
-}
-
-.borderunder {
-  border-style: none none solid none;
-  border-color: #c5c5c5;
-  border-width: 1px;
-}
-
-.white {
-  background-color: white;
-}
-
-#cpu {
-  height: 25.95%;
-  overflow: visible;
-}
-
-#status {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  height: 105px;
-}
-
-#circle-half-top {
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  border: 32px solid white;
-  border-radius: 50%;
-  animation: rotate 2s infinite reverse linear;
-}
-
-#circle-half-bottom {
-  position: absolute;
-  height: 24px;
-  width: 24px;
-  border: 24px solid black;
-  border-radius: 50%;
-}
-
-#circlebox {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 80px;
-  height: 100%;
-}
-
-#spinning-rec {
-  position: absolute;
-  width: 70px;
-  height: 10px;
-  background-color: black;
-  -webkit-animation: rotate 2s infinite linear;
-          animation: rotate 2s infinite linear;
-}
-
-.borderallround {
-  border-style: solid solid solid solid;
-  border-color: #c5c5c5;
-  border-width: 1px;
-}
-
-#cpu {
-  height: 315px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-}
-
-.spacingAbove {
-  margin-top: 3px;
-}
-
-@-webkit-keyframes rotate {
-  0% {
-    -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-  }
-  100% {
-    -webkit-transform: rotate(315deg);
-            transform: rotate(315deg);
-  }
-}
-
-@keyframes rotate {
-  0% {
-    -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-  }
-  100% {
-    -webkit-transform: rotate(315deg);
-            transform: rotate(315deg);
-  }
-}
-
-.flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.celestialBody {
-  height: 32px;
-  width: 32px;
-  position: absolute;
-}
-
-#CPS {
-  height: 125px;
-  overflow: hidden;
-  position: relative;
-}
-
-#chartBorderParent {
-  width: 90%;
-  margin-left: 5%;
   overflow: visible;
   height: 210px;
-}
+  border-width: 4px; }
 
 #chart_div {
-  width: 99%;
+  width: 300px;
   height: 210px;
-  margin: auto;
-}
+  display: flex; }
 
 .center {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  justify-items: center;
-}
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center; }
 
 .chartBorder {
-  border-width: 4px;
-  position: absolute;
-}
-
-#chartBorderWhite {
-  height: 250px;
-  width: 300px;
-  border-color: white;
-}
+  display: flex;
+  height: 210px;
+  width: 300px; }
 
 #chartBorderBlack {
-  height: 252px;
-  width: 302px;
-  border-color: black;
-  border-radius: 15px;
-}
-/*# sourceMappingURL=leftbar.css.map */
+  overflow: visible;
+  height: 210px;
+  width: 300px;
+  border-width: 4px;
+  background-color: blue;
+  border-color: blue;
+  border-radius: 15px; }
+
+#chartBorderWhite {
+  overflow: visible;
+  height: 210px;
+  width: 300px;
+  border-width: 1px;
+  border-color: white;
+  border-radius: 0px; }

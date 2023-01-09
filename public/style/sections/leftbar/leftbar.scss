@@ -1,15 +1,164 @@
-chartBorderParent{
-    display:flex;
-    width:100%; 
-    overflow: visible; 
-    height: 210px;
-    border-width:4px;
+$background: black;
+$leftbartextsize: 25px;
+
+.leftbarelem{
+  width: 100%;
+  height: 6%;
+}
+#date{
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  h1 {
+    color: black;
+    margin-left: 0%;
+    font-size: $leftbartextsize;
+  }
+}
+
+#name {
+  width: 100%;
+  height: 6%;
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  h1{
+    color:white;
+    font-size: $leftbartextsize;
+    margin-left:2%;
+  }
+}
+
+.category-span-out{
+  display:flex;
+  justify-content: center;
+  -webkit-clip-path: polygon(100% 0, 100% 73%, 94% 100%, 0 100%, 0 0);
+  clip-path: polygon(100% 0, 100% 73%, 94% 100%, 0 100%, 0 0);
+  width: 100%;
+  background-color: white;
+}
+.category-span-in{
+  display:flex;
+  justify-content: center;
+  -webket-clip-path: polygon(99% 6%, 99% 68%, 93.5% 93%, 1% 93%, 1% 6%);
+  clip-path: polygon(99% 6%, 99% 68%, 93.5% 93%, 1% 93%, 1% 6%);
+  h1 {
+    padding-left: 5%;
+  }
+}
+
+.borderunder{
+  border-style: none none solid none;
+  border-color: rgb(197, 197, 197);
+  border-width: 1px;
+}
+
+.white{
+  background-color: white;
+}
+
+#cpu {
+  height: 335px;
+  overflow:visible;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#status{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 105px;
+}
+
+#circle-half-top{
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: 32px solid white;
+  border-radius:50%;
+  animation: rotate 2s infinite reverse linear;
+}
+
+#circle-half-bottom{
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 24px solid black;
+  border-radius:50%;
+}
+
+#circlebox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 100%;
+}
+
+#spinning-rec{
+  position: absolute;
+  width: 70px;
+  height: 10px;
+  background-color: black;
+  animation: rotate 2s infinite linear;
+}
+
+.borderallround{
+  border-style: solid solid solid solid;
+  border-color: rgb(197,197,197);
+  border-width: 1px;
+}
+
+.spacingAbove{
+  margin-top: 3px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(315deg);
+  }
+}
+
+.flex{
+  display:flex;
+}
+.celestialBody{
+  height:32px; width: 32px; position: absolute;
+}
+#CPS{
+  height:125px; overflow:visible; position: relative;
+}
+
+.celestialBody{
+  height:32px;
+  width: 32px;
+  position: absolute;
+}
+
+#CPS {
+  height: 125px; 
+  overflow: hidden;
+  position: relative;
 }
 
 #chart_div{
     width: 300px; 
     height: 210px; 
     display: flex;
+}
+
+#chartBorderParent{
+  width: 100%;
+  overflow:visible;
+  height: 210px;
+  border-width:4px;
 }
 
 .center{
@@ -26,14 +175,14 @@ chartBorderParent{
 
 #chartBorderBlack{
     overflow:visible;
-    height: 210px; width: 300px;  
+    height: 250px; width: 300px;  
     border-width:4px;
     background-color:blue;
     border-color:blue; border-radius: 15px;
 }
 #chartBorderWhite{
     overflow:visible;
-    height: 210px; width: 300px;  
+    height: 250px; width: 300px;  
     border-width:1px;
     border-color:white; border-radius: 0px;
 }

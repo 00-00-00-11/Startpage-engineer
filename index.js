@@ -12,6 +12,7 @@ const app = express();
 const server = http.createServer(app);
 const IP2LOC = require('ip2location-nodejs');
 const APPID = "627dd26ec6398215229e708af7b02c8d";
+const todoist_key = "50d98b9cf46e2b96603c41f6777b78e61d5f21f6";
 
 let getData = html => {
   const $ = cheerio.load(html);
@@ -39,6 +40,22 @@ for( var i = 0; i < histogramLength; i++) cpuHist[i] = [i,0];
 server.listen(PORT, () =>{ 
     console.log(`Server running on port ${PORT}`);
     io.on('connection', function (socket) {
+        var todoist_url = `https://api.todoist.com/rest/v2/tasks`
+
+        let config = {
+            url: `${todoist_url}`,
+            headers: {
+                'Authorization': `Bearer ${todoist_key}`,
+            }
+        }
+        console.log(config.headers);
+        let data = {
+          //  'sync_token': '*',
+           // 'resource_types': '["all"]',
+        }
+        axios(config).then( resp => {
+            socket.emit("tasks",resp.data);
+        }).catch( () => { });
         
         publicIp.v4().then(
             (v4)=>{
@@ -64,28 +81,25 @@ server.listen(PORT, () =>{
                             snow = Math.max(resp.data.list[i].snow['3h'], snow);  
                         }
                         if(resp.data.list[i].rain != undefined){
-                            console.log(resp.data.list[i].rain['3h']);
                             rain = Math.max(resp.data.list[i].rain['3h'], rain);  
                         }
                      }
                      socket.emit("forecastData", [resp.data.list[0], temp_min, temp_max, snow, rain]);
-                });
+                }).catch( () => { });
+
                 axios.get(weather_url).then( resp => {
                      //console.log(resp.data.main.temp);
                      socket.emit("weatherData", resp.data);
-                });
+                }).catch( () => { });
 
-            }).catch(
-                () => {
-
-                }
-            );
+            }).catch( () => { });
             
 
         socket.emit("cpuType", os.cpus()[0].model);
         axios.get(random_xkcd_url).then( resp => {
           xkcd_url = resp.request.res.responseUrl
-        });
+        }).catch( () => { });
+
         axios.get(xkcd_url)
              .then(response =>{
                //console.log(response.data);

@@ -40,6 +40,14 @@ function button(id){
     console.log(id);
     document.getElementById(id).parentElement.remove();
 }
+function createTaskHTML(taskname, id){
+   let taskerinohtml = `  
+                    <div class="task" >
+                        <button class="taskbutton" id="${id}" onclick="button(this.id);" > </button>
+                        <p class="tasklabel"> ${taskname} </p>
+                    </div> `;
+    return taskerinohtml;
+}
 
 function checkTemp(){
     if ((typeof temp == 'undefined') || (typeof tempmin == 'undefined') || (typeof tempmax == 'undefined')) return; 
@@ -206,6 +214,18 @@ socket.on("forecastData", resp => {
         else { prep_elem.innerHTML += "LIGHT"; }
     } else{ prep_elem.innerHTML = "NONE" }
 });
+
 socket.on("weatherData", resp => {
     temp = toCels(resp.main.temp);
+});
+socket.on("tasks", tasklist => {
+    let prio1 = ""; let prio2 = ""; let prio3 = ""; let prio4 = "";
+    tasklist.forEach(task => {
+        let task_html = createTaskHTML(task.content, task.id);
+        if(task.priority == 1) prio1 += task_html;
+        if(task.priority == 2) prio2 += task_html;
+        if(task.priority == 3) prio3 += task_html;
+        if(task.priority == 4) prio4 += task_html;
+    });
+    document.getElementById("taskslist").innerHTML = prio4 + prio3 + prio2 + prio1;    
 });

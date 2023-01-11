@@ -26,6 +26,11 @@ body {
     font-family: "Share Tech Mono", monospace;
     font-weight: 500;
     font-size: 12px; }
+  #main label {
+    color: #c5c5c5;
+    font-family: "Share Tech Mono", monospace;
+    font-weight: 500;
+    font-size: 12px; }
   #main h1 {
     font-family: "Share Tech Mono", monospace;
     font-weight: 500;
@@ -267,6 +272,39 @@ body {
 #tempmax {
   color: #191919 !important; }
 
+.task {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 3%;
+  margin-bottom: 3px; }
+
+.taskcheckbox {
+  width: auto !important;
+  height: auto !important; }
+
+.tasklabel {
+  margin-left: 10px; }
+
+#taskslist {
+  flex-direction: column; }
+
+.taskbutton {
+  width: 14px;
+  height: 14px;
+  border-style: solid solid solid solid;
+  border-color: white;
+  border-width: 1px;
+  background-color: black;
+  border-radius: 2px; }
+
+.taskbutton:hover {
+  border-width: 2px;
+  border-radius: 2px; }
+
+.taskbutton:focus {
+  background-color: white; }
+
 #leftbar {
   background-color: black;
   display: flex;
@@ -368,13 +406,9 @@ button {
   font-size: 1rem; }
 
 input,
-button,
-input:focus,
-button:focus {
+input:focus {
   border: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none; }
+  outline: 0; }
 
 ul,
 li {
@@ -441,6 +475,7 @@ body.suggestions .search-suggestions {
   display: flex; }
 
 .search-suggestion {
+  border-width: 0px;
   padding: 0.75rem 1rem;
   text-align: left;
   white-space: nowrap;

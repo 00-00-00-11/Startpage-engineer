@@ -15,7 +15,7 @@ const APPID = "627dd26ec6398215229e708af7b02c8d";
 
 let getData = html => {
   const $ = cheerio.load(html);
-  return null;//$("#comic").children("img:first").attr("src");
+  return null//$("#comic").children("img:first").attr("src");
 }
 
 let ip2loc = new IP2LOC.IP2Location();

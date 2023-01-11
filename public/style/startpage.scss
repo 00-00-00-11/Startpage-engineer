@@ -45,7 +45,13 @@ body{
     
     flex-wrap: nowrap;
     
-    p{
+    p {
+        color: rgb(197, 197, 197);
+        font-family: $textfont;
+        font-weight: $textweight;
+        font-size: 12px;
+    }
+    label {
         color: rgb(197, 197, 197);
         font-family: $textfont;
         font-weight: $textweight;

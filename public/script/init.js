@@ -36,6 +36,19 @@ class celestial{
   }
 }
 
+function checkTemp(){
+    if ((typeof temp == 'undefined') || (typeof tempmin == 'undefined') || (typeof tempmax == 'undefined')) return; 
+    let i = 1; let w = (tempmax - tempmin)/10;
+    while(i <= 10) {
+        if(temp > tempmax - i*w) break; 
+        i++;
+    }
+    console.log(i);
+    let color = window.getComputedStyle(document.getElementById(`square${i}`)).backgroundColor;
+    let c = 255-parseInt(color.slice(4,color.length).split(",")[0]);
+    document.getElementById(`square${i}`).innerHTML=`<p class="center" style="color:rgb(${c},${c},${c});">${temp}:</p>`;
+    clearInterval(interv);
+}
 function initDate(date){
   var month = date.getMonth() + 1;
   var day = date.getDate();
@@ -113,17 +126,15 @@ function initCPS(current, ssdate, srdate){
     if (mx < 0) {
       mx = (currentdec + 24 - ssdec)/nighttime * 90;
     }
-    console.log(mx);
     moon.updateX(mx);
   }
   sun.updateCelestial();
   moon.updateCelestial();
 }
 
-
 var moon = new celestial(true,0,0,document.getElementById("moon"));
 var sun = new celestial(true,0,0,document.getElementById("sun"));
-
+var interv = setInterval(checkTemp, 100);
 var sunrise; var sunset; var timeOfDay = true;
 var socket = io();
 var processorListed = false;
@@ -162,13 +173,18 @@ socket.on("comic_url", (url) => {
     console.log(document.getElementById("xkcd").attributes.getNamedItem("src").value)
   }
 });
-
+//I named this function to Cels but it actually converts kelvin to fahrenheight... whoops...
 var toCels = tmp => Math.round( (tmp - 273.15) * (9/5) + 32 );
-socket.on("forecastData", data => {
-  console.log(data);
-  document.getElementById("tempmin").innerHTML = toCels(data.main.temp_min);
-  document.getElementById("tempmax").innerHTML = toCels(data.main.temp_max);
-  document.getElementById("windspeed").innerHTML = data.wind.speed + " m/s";
-  document.getElementById("clouds").innerHTML = data.clouds.all + "%";
-  document.getElementById("hum").innerHTML = data.main.humidity + "%";
+var tempmin; var tempmax; var temp;
+socket.on("forecastData", resp => {
+    //resp format is [openweather obj, temp_min, temp_max, snow, rain]
+    let data = resp[0]; tempmin = toCels(resp[1]); tempmax = toCels(resp[2]);
+    document.getElementById("tempmin").innerHTML = tempmin;
+    document.getElementById("tempmax").innerHTML = tempmax;
+    document.getElementById("windspeed").innerHTML = data.wind.speed + " m/s";
+    document.getElementById("clouds").innerHTML = data.clouds.all + "%";
+    document.getElementById("hum").innerHTML = data.main.humidity + "%";
+});
+socket.on("weatherData", resp => {
+    temp = toCels(resp.main.temp);
 });

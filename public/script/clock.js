@@ -12,6 +12,7 @@ function slowerFunctions(){
   updateCPS(new Date());
 }
 
+
 function updateClock(){
   var timestring = document.getElementById("time").innerHTML.split(":");
   var timenum = [];

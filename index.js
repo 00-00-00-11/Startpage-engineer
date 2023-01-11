@@ -56,15 +56,16 @@ server.listen(PORT, () =>{
                                     + `lat=${lat}&lon=${longi}&appid=${APPID}`;
                 axios.get(forecast_url).then( resp => {
                      //console.log(resp.data.list[0]);
-                     let temp_min = 10000; let temp_max = -1; let rain = 0; let snow = 0;
+                     let temp_min = 10000; let temp_max = -1; let rain = -1; let snow = -1;
                      for(let i = 0; i < resp.data.list.length; i++) {
                         temp_min = Math.min(resp.data.list[i].main.temp, temp_min); 
                         temp_max = Math.max(resp.data.list[i].main.temp, temp_max); 
                         if(resp.data.list[i].snow != undefined){
-                            snow += resp.data.list[i].snow['3h'];  
+                            snow = Math.max(resp.data.list[i].snow['3h'], snow);  
                         }
                         if(resp.data.list[i].rain != undefined){
-                            rain += resp.data.list[i].rain['3h'];  
+                            console.log(resp.data.list[i].rain['3h']);
+                            rain = Math.max(resp.data.list[i].rain['3h'], rain);  
                         }
                      }
                      socket.emit("forecastData", [resp.data.list[0], temp_min, temp_max, snow, rain]);

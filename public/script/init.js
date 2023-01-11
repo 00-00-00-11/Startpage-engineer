@@ -179,11 +179,26 @@ var tempmin; var tempmax; var temp;
 socket.on("forecastData", resp => {
     //resp format is [openweather obj, temp_min, temp_max, snow, rain]
     let data = resp[0]; tempmin = toCels(resp[1]); tempmax = toCels(resp[2]);
+    let snow = resp[3]; let rain = resp[4];
     document.getElementById("tempmin").innerHTML = tempmin;
     document.getElementById("tempmax").innerHTML = tempmax;
     document.getElementById("windspeed").innerHTML = data.wind.speed + " m/s";
     document.getElementById("clouds").innerHTML = data.clouds.all + "%";
     document.getElementById("hum").innerHTML = data.main.humidity + "%";
+    let prep_elem = document.getElementById("precipitation");
+    console.log(rain);
+    snow = snow/3; rain = rain/3;
+    if(snow > 0) {
+        prep_elem.innerHTML = "SNOW: ";
+        if(snow >= 2.5){ prep_elem.innerHTML += "HEAVY";}
+        else if(snow >= 1){ prep_elem.innerHTML += "MODERATE";}
+        else { prep_elem.innerHTML += "LIGHT"; }
+    } else if (rain > 0) {
+        prep_elem.innerHTML = "RAIN: ";
+        if(rain >= 10){ prep_elem.innerHTML += "HEAVY";}
+        else if(rain >= 3){ prep_elem.innerHTML += "MODERATE";}
+        else { prep_elem.innerHTML += "LIGHT"; }
+    } else{ prep_elem.innerHTML = "NONE" }
 });
 socket.on("weatherData", resp => {
     temp = toCels(resp.main.temp);

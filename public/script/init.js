@@ -36,6 +36,11 @@ class celestial{
   }
 }
 
+function button(id){
+    console.log(id);
+    document.getElementById(id).parentElement.remove();
+}
+
 function checkTemp(){
     if ((typeof temp == 'undefined') || (typeof tempmin == 'undefined') || (typeof tempmax == 'undefined')) return; 
     let i = 1; let w = (tempmax - tempmin)/10;
@@ -46,7 +51,7 @@ function checkTemp(){
     i = 11 - i;
     console.log(i);
     let color = window.getComputedStyle(document.getElementById(`square${i}`)).backgroundColor;
-    let c = 255-parseInt(color.slice(4,color.length).split(",")[0]);
+    let c = i <= 5? 210 : 0;//255-parseInt(color.slice(4,color.length).split(",")[0]);
     document.getElementById(`square${i}`).innerHTML=`<p class="center" style="color:rgb(${c},${c},${c});">${temp}:</p>`;
     clearInterval(interv);
 }

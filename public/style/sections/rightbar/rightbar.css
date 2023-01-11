@@ -1,3 +1,4 @@
+@use "sass:math";
 .rightbarelem {
   width: 100%; }
 
@@ -14,5 +15,50 @@
 
 #Humor {
   max-height: 60%;
-  flex-direction: column;
+  flex-direction: column; }
+
+#xkcd_url {
   overflow: scroll; }
+
+.square {
+  width: 30px;
+  height: 30px;
+  display: flex; }
+  .square p {
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center; }
+
+#square1 {
+  background-color: #191919; }
+
+#square2 {
+  background-color: #303030; }
+
+#square3 {
+  background-color: #474747; }
+
+#square4 {
+  background-color: #5e5e5e; }
+
+#square5 {
+  background-color: #757575; }
+
+#square6 {
+  background-color: #8c8c8c; }
+
+#square7 {
+  background-color: #a3a3a3; }
+
+#square8 {
+  background-color: #bababa; }
+
+#square9 {
+  background-color: #d1d1d1; }
+
+#square10 {
+  background-color: #e8e8e8; }
+
+#tempmax {
+  color: #191919 !important; }

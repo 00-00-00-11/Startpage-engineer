@@ -110,7 +110,7 @@
 .celestialBody {
   height: 32px;
   width: 32px;
-  position: absolute; }
+  position: relative; }
 
 #CPS {
   height: 125px;

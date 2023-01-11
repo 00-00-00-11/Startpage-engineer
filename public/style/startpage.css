@@ -1,4 +1,37 @@
 @import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap");
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-content: center; }
+
+#main {
+  background-color: black;
+  height: 92vh;
+  margin-top: 4vh;
+  width: 93vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: nowrap; }
+  @media screen and (max-width: 1266px) {
+    #main {
+      justify-content: center; } }
+  #main p {
+    color: #c5c5c5;
+    font-family: "Share Tech Mono", monospace;
+    font-weight: 500;
+    font-size: 12px; }
+  #main h1 {
+    font-family: "Share Tech Mono", monospace;
+    font-weight: 500;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0); }
+
 .leftbarelem {
   width: 100%;
   height: 6%; }
@@ -111,7 +144,7 @@
 .celestialBody {
   height: 32px;
   width: 32px;
-  position: absolute; }
+  position: relative; }
 
 #CPS {
   height: 125px;
@@ -169,6 +202,7 @@
   border-color: white;
   z-index: 100; }
 
+@use "sass:math";
 .rightbarelem {
   width: 100%; }
 
@@ -185,8 +219,53 @@
 
 #Humor {
   max-height: 60%;
-  flex-direction: column;
+  flex-direction: column; }
+
+#xkcd_url {
   overflow: scroll; }
+
+.square {
+  width: 30px;
+  height: 30px;
+  display: flex; }
+  .square p {
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center; }
+
+#square1 {
+  background-color: #191919; }
+
+#square2 {
+  background-color: #303030; }
+
+#square3 {
+  background-color: #474747; }
+
+#square4 {
+  background-color: #5e5e5e; }
+
+#square5 {
+  background-color: #757575; }
+
+#square6 {
+  background-color: #8c8c8c; }
+
+#square7 {
+  background-color: #a3a3a3; }
+
+#square8 {
+  background-color: #bababa; }
+
+#square9 {
+  background-color: #d1d1d1; }
+
+#square10 {
+  background-color: #e8e8e8; }
+
+#tempmax {
+  color: #191919 !important; }
 
 #leftbar {
   background-color: black;
@@ -275,7 +354,6 @@ body {
   margin: 0;
   padding: 0;
   transition: background 0.2s;
-  background: var(--background);
   color: var(--foreground); }
 
 input,
@@ -492,36 +570,3 @@ body.form .search-form {
 @media (min-width: 1500px) {
   .categories {
     grid-template-columns: repeat(5, 220px) 175px; } }
-
-* {
-  margin: 0;
-  padding: 0; }
-
-body {
-  background-color: black;
-  display: flex;
-  justify-content: center;
-  align-content: center; }
-
-#main {
-  background-color: black;
-  height: 92vh;
-  margin-top: 4vh;
-  width: 93vw;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: nowrap; }
-  @media screen and (max-width: 1266px) {
-    #main {
-      justify-content: center; } }
-  #main p {
-    color: #c5c5c5;
-    font-family: "Share Tech Mono", monospace;
-    font-weight: 500;
-    font-size: 12px; }
-  #main h1 {
-    font-family: "Share Tech Mono", monospace;
-    font-weight: 500;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0); }

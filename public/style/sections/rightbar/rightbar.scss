@@ -1,5 +1,8 @@
+@use "sass:math";
 $background : black;
 $rightbartextsize: 25px;
+$leftsquarecolor:25;
+$squaresize: 30px;
 
 .rightbarelem{
     width: 100%;
@@ -21,6 +24,56 @@ $rightbartextsize: 25px;
 #Humor{
     max-height: 60%;
     flex-direction: column;
+}
+#xkcd_url{
     overflow: scroll;
 }
+@mixin squarecolor($num:-1) {
+  $step: (255 - $leftsquarecolor) / 10;
+  $cl: $num * $step + $leftsquarecolor;
+  background-color: rgb($cl, $cl, $cl); 
+}
+.square{
+  width: $squaresize; height: $squaresize;
+  display:flex;
+  p{
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+  }
+}
 
+#square1{
+  @include squarecolor($num: 0);
+}
+#square2{
+  @include squarecolor($num: 1);
+}
+#square3{
+  @include squarecolor($num: 2);
+}
+#square4{
+  @include squarecolor($num: 3);
+}
+#square5{
+  @include squarecolor($num: 4);
+}
+#square6{
+  @include squarecolor($num: 5);
+}
+#square7{
+  @include squarecolor($num: 6);
+}
+#square8{
+  @include squarecolor($num: 7);
+}
+#square9{
+  @include squarecolor($num: 8);
+}
+#square10{
+  @include squarecolor($num: 9);
+}
+#tempmax{
+    color: rgb($leftsquarecolor, $leftsquarecolor, $leftsquarecolor) !important;
+  }

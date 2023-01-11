@@ -36,48 +36,6 @@ class celestial{
   }
 }
 
-var moon = new celestial(true,0,0,document.getElementById("moon"));
-var sun = new celestial(true,0,0,document.getElementById("sun"));
-
-var sunrise; var sunset; var timeOfDay = true;
-var socket = io();
-var processorListed = false;
-var SunriseSunsetListed = false;
-var today = new Date();
-
-document.getElementById("search-input").focus();
-initDate(today);
-initClock(today);
-
-socket.on("cpuType", (value) => {
-  //console.log("lmao");
-  if(processorListed == false){
-    document.getElementById("cpu-type").innerHTML = document.getElementById("cpu-type").innerHTML + value;
-    processorListed = true;
-  }
-  socket.removeListener("cpuType");
-});
-
-socket.on("sunset-sunrise",(value)=>{
-  if(SunriseSunsetListed == false){
-      sunrise = new Date(value[1]); sunset = new Date(value[0]);
-      console.log(value[1]);
-      document.getElementById("sunset-time").innerHTML +=  sunset.getHours() + ":" + sunset.getMinutes();
-      document.getElementById("sunrise-time").innerHTML +=  sunrise.getHours() + ":" + sunrise.getMinutes();
-      SunriseSunsetListed = true;
-      initCPS(today,sunset,sunrise);
-  } 
-});
-socket.on("comic_url", (url) => {
-  if(url != null) {
-    //document.getElementById("xkcd").attributes.src = "https:" + url;
-    document.getElementById("xkcd").attributes.getNamedItem("src").value = "https:" + url;
-    document.getElementById("xkcd_url").attributes.getNamedItem("href").value = "https:" + url;
-    console.log(document.getElementById("xkcd").attributes.getNamedItem("src").value)
-  }
-});
-
-
 function initDate(date){
   var month = date.getMonth() + 1;
   var day = date.getDate();
@@ -133,12 +91,13 @@ function convertToDec(date){
 
 function initCPS(current, ssdate, srdate){
   
-  if( ( current.getHours() <= ssdate.getHours() ) &&  ( current.getHours() >= srdate.getHours() ) ) 
+  if((  current.getHours() < ssdate.getHours()  || (current.getHours() == ssdate.getHours() && current.getMinutes() > ssdate.getMinutes())) &&   current.getHours() >= srdate.getHours()  ) 
     timeOfDay = true;
   else
     timeOfDay = false;
   
   adjustCelestialToTOD(timeOfDay);
+  //console.log(srdate);
   var srdec = convertToDec((srdate));
   var ssdec = convertToDec((ssdate))
   var currentdec = convertToDec((current));
@@ -146,11 +105,70 @@ function initCPS(current, ssdate, srdate){
   var nighttime = 24 - daytime;
 
   if(timeOfDay == true){
-    sun.updateX((currentdec - srdec)/daytime * 90);
+    var sx = (currentdec - srdec)/daytime * 90;
+    //console.log(sx);
+    sun.updateX(sx);
   }else{
-    moon.updateX( (currentdec - ssdec)/nighttime * 90 );
+    var mx = (currentdec - ssdec)/nighttime * 90;
+    if (mx < 0) {
+      mx = (currentdec + 24 - ssdec)/nighttime * 90;
+    }
+    console.log(mx);
+    moon.updateX(mx);
   }
-  moon.updateCelestial();
   sun.updateCelestial();
+  moon.updateCelestial();
 }
 
+
+var moon = new celestial(true,0,0,document.getElementById("moon"));
+var sun = new celestial(true,0,0,document.getElementById("sun"));
+
+var sunrise; var sunset; var timeOfDay = true;
+var socket = io();
+var processorListed = false;
+var SunriseSunsetListed = false;
+var today = new Date();
+
+document.getElementById("search-input").focus();
+initDate(today);
+initClock(today);
+
+socket.on("cpuType", (value) => {
+  //console.log("lmao");
+  if(processorListed == false){
+    document.getElementById("cpu-type").innerHTML = document.getElementById("cpu-type").innerHTML + value;
+    processorListed = true;
+  }
+  socket.removeListener("cpuType");
+});
+
+socket.on("sunset-sunrise",(value)=>{
+  if(SunriseSunsetListed == false){
+      sunrise = new Date(value[1]); sunset = new Date(value[0]);
+      console.log(value[1]);
+      var val = formatTime(sunrise.getHours() ,sunrise.getMinutes(), sunrise.getSeconds());
+      document.getElementById("sunset-time").innerHTML +=  formatTime(sunset.getHours() ,sunset.getMinutes(), sunset.getSeconds());
+      document.getElementById("sunrise-time").innerHTML += val;
+      SunriseSunsetListed = true;
+      initCPS(today,sunset,sunrise);
+  } 
+});
+socket.on("comic_url", (url) => {
+  if(url != null) {
+    //document.getElementById("xkcd").attributes.src = "https:" + url;
+    document.getElementById("xkcd").attributes.getNamedItem("src").value = "https:" + url;
+    document.getElementById("xkcd_url").attributes.getNamedItem("href").value = "https:" + url;
+    console.log(document.getElementById("xkcd").attributes.getNamedItem("src").value)
+  }
+});
+
+var toCels = tmp => Math.round( (tmp - 273.15) * (9/5) + 32 );
+socket.on("forecastData", data => {
+  console.log(data);
+  document.getElementById("tempmin").innerHTML = toCels(data.main.temp_min);
+  document.getElementById("tempmax").innerHTML = toCels(data.main.temp_max);
+  document.getElementById("windspeed").innerHTML = data.wind.speed + " m/s";
+  document.getElementById("clouds").innerHTML = data.clouds.all + "%";
+  document.getElementById("hum").innerHTML = data.main.humidity + "%";
+});

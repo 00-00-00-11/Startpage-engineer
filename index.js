@@ -2,7 +2,7 @@ const http = require('http');
 const path = require('path');
 const osUtils = require('os-utils');
 const os = require('os');
-const geoip = require('geoip-lite');
+const geoip = require('ipapi.co');
 const publicIp = require('public-ip');
 const { getSunrise, getSunset } = require('sunrise-sunset-js');
 const express = require('express');
@@ -10,12 +10,18 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const app = express();
 const server = http.createServer(app);
+const IP2LOC = require('ip2location-nodejs');
+const APPID = "627dd26ec6398215229e708af7b02c8d";
 
 let getData = html => {
   const $ = cheerio.load(html);
-  return null//$("#comic").children("img:first").attr("src");
+  return null;//$("#comic").children("img:first").attr("src");
 }
-app.use(express.static(path.join(__dirname, 'public')))
+
+let ip2loc = new IP2LOC.IP2Location();
+ip2loc.open('./ip.bin');
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 const PORT = process.env.PORT || 5000;
 
@@ -28,7 +34,6 @@ var comic_url = null;
 var random_xkcd_url = "https://c.xkcd.com/random/comic"
 var xkcd_url = "https://www.xkcd.com"
 
-
 for( var i = 0; i < histogramLength; i++) cpuHist[i] = [i,0];
 
 server.listen(PORT, () =>{ 
@@ -37,15 +42,27 @@ server.listen(PORT, () =>{
         
         publicIp.v4().then(
             (v4)=>{
-                var ll =  geoip.lookup(v4).ll;
-                var longi = ll[1];
-                var lat = ll[0];
+                var longi = ip2loc.getLongitude(v4);
+                var lat = ip2loc.getLatitude(v4);
 
                 var sunset = getSunset(lat, longi);
                 var sunrise = getSunrise(lat,longi);
-                console.log(sunset);
                 
                 socket.emit("sunset-sunrise",[sunset,sunrise]);
+                
+                var weather_url = `http://api.openweathermap.org/data/2.5/weather?`
+                                    + `lat=${lat}&lon=${longi}&appid=${APPID}`;
+                var forecast_url = `http://api.openweathermap.org/data/2.5/forecast?`
+                                    + `lat=${lat}&lon=${longi}&appid=${APPID}`;
+                axios.get(weather_url).then( resp => {
+                     console.log(resp.data.main.temp);
+                     socket.emit("weatherData", resp.data);
+                });
+                axios.get(forecast_url).then( resp => {
+                     console.log(resp.data.list[0]);
+                     socket.emit("forecastData", resp.data.list[0]);
+                });
+
             }).catch(
                 () => {
 
@@ -70,6 +87,7 @@ server.listen(PORT, () =>{
               
         //sets interval to check cpu usage
         
+        console.log(os.userInfo().username);
         var intv = setInterval(
             () => {
                 osUtils.cpuUsage((value) => {

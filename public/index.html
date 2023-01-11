@@ -81,9 +81,9 @@
 
             </div>
 
-            <div class ="leftbarelem ">
+            <div class ="leftbarelem borderunder" style="height:160px; overflow:hidden;">
                 <p class = "spacingAbove">  CELESTIAL POSITIONING MODULE </p>
-                <div id ="CPS" class = "leftbarelem ">
+                <div id ="CPS" class = "leftbarelem " style="overflow:hidden;">
                     <img id = "moon" src = "assets/moon.png" class="celestialBody"> 
                     <img id = "sun" src = "assets/sun.png" class="celestialBody"> 
                 </div>
@@ -92,6 +92,44 @@
                     <p id = "sunrise-time" class="spacingAbove" style="position: absolute;">  SUNRISE TIME:  </p>
                 </div>
             </div>
+                <div id ="Weather" class = "rightbarelem borderunder spacingBelow">
+                    <p class = "spacingAbove"> PLANETARY REPORT MODULE</p>
+                    <div id="weatherdata" style="margin-top:5px; margin-bottom:5px;"> 
+                      <div style=" "class="flex wdata"> 
+                          <p style="white-space:nowrap" >CLOUD COVER</p> 
+                          <p style="flex-shrink:1;flex-grow:1;overflow:hidden;">............................................ </p> 
+                          <p id="clouds"style="white-space:nowrap">D</p> 
+                      </div>
+                      <div style=" "class="flex wdata"> 
+                          <p style="white-space:nowrap" >REGIONAL PRECIPITATION</p> 
+                          <p style="flex-shrink:1;flex-grow:1;overflow:hidden;">............................................ </p> 
+                          <p style="white-space:nowrap">D</p> 
+                      </div>
+                      <div style=" "class="flex wdata"> 
+                          <p style="white-space:nowrap" >WATER VAPOR DENSITY</p> 
+                          <p style="flex-shrink:1;flex-grow:1;overflow:hidden;">............................................ </p> 
+                          <p id="hum" style="white-space:nowrap">D</p> 
+                      </div>
+                      <div style=" "class="flex wdata"> 
+                          <p style="white-space:nowrap" >WIND VELOCITY</p> 
+                          <p style="flex-shrink:1;flex-grow:1;overflow:hidden;">............................................ </p> 
+                          <p id = "windspeed" style="white-space:nowrap">D</p> 
+                      </div>
+                    </div>
+                    <p style="margin-bottom:1px;"> TEMPERATURE </p>
+                    <div id="squares" class = "flex " style="margin-bottom:10px;"> 
+                      <div id = "square1" class = "square"> <p id="tempmin"class="center">54 </p> </div> 
+                      <div id = "square2" class = "square"> </div> 
+                      <div id = "square3" class = "square"> </div> 
+                      <div id = "square4" class = "square"> </div> 
+                      <div id = "square5" class = "square"> </div> 
+                      <div id = "square6" class = "square"> </div> 
+                      <div id = "square7" class = "square"> </div> 
+                      <div id = "square8" class = "square"> </div> 
+                      <div id = "square9" class = "square"> </div> 
+                      <div id = "square10" class = "square"><p id="tempmax" class="center">83</p></div> 
+                    </div>
+                </div>
         </div>
 
 
@@ -107,12 +145,11 @@
         <div id="rightbar" class="thinboy"> 
                 <div id = "Humor" class = "rightbarelem bordertopbot flex">
                   <p class = "spacingAbove spacingBelow"> SCHEDULED HUMOR MODULE</p>
-                  <a id = "xkcd_url" href="" target="_blank" rel="noopenner norefferrer">
-                    <img id = "xkcd" "spacingBelow" src = "https://imgs.xkcd.com/comics/tall_infographics.png" > 
-                  </a>
-                </div>
-                <div id ="Weather" class = "rightbarelem borderunder">
-                <p class = "spacingAbove"> PLANETARY REPORT MODULE</p>
+                  <div id = "xkcd_url" class="spacingBelow" style="overflow:scroll; margin-bottom:5px;">
+                      <a href="" target="_blank" rel="noopenner norefferrer">
+                        <img id = "xkcd" src = "https://imgs.xkcd.com/comics/tall_infographics.png" > 
+                      </a>
+                  </div>
                 </div>
                 <div id ="Assignments" class = "rightbarelem borderunder">
                 <p class = "spacingAbove"> HUMAN COMPLETION REQUIREMENTS MODULE </p>

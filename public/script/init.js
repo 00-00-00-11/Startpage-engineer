@@ -43,6 +43,7 @@ function checkTemp(){
         if(temp > tempmax - i*w) break; 
         i++;
     }
+    i = 11 - i;
     console.log(i);
     let color = window.getComputedStyle(document.getElementById(`square${i}`)).backgroundColor;
     let c = 255-parseInt(color.slice(4,color.length).split(",")[0]);

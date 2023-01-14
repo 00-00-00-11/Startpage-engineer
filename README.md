@@ -26,6 +26,7 @@ The Celestial Position Module shows you how much day or night you have left with
 ![Alt text](images/prm.png?raw=true "planetary report")
 
 The Planetary Report Module displays weather data from the [OpenWeatherMaps API](https://openweathermap.org/). Most of these are relatively straightforward. Rain and snow are considered light, heavy, or moderate depending on the highest mm/hr forecasted for the current day. The exact amount of mm/hr that are consider "light" or "heavy" is based on numbers I found online: I'm not sure how accurate they are. 
+
 ![Alt text](images/temp.png?raw=true "temperature report")
 
 The temperature portion displays the high and low temperatures of the day on the rightmost and leftmost square respectively. These aren't super accurate: OpenWeather doesn't provide a high and low temperature forecast in the free version so I calculate them by looking at all the forecasted temperatures for the day. They still end up a little off compared to the official high/low forecast. The current temperature can be displayed on any square. It'll be displayed on a square that's on the right side if the current temperature is close to the highest temperature of the day, and vice versa for low temperatures. The current temperature can replace the high and low for the day, but you can distinguish the current temperature because it will always be displayed with a colon ":" at the end.

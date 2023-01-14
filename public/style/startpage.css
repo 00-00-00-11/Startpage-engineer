@@ -287,7 +287,14 @@ body {
   margin-left: 10px; }
 
 #taskslist {
-  flex-direction: column; }
+  flex-direction: column;
+  overflow: scroll;
+  max-height: 150px; }
+
+#eventslist {
+  flex-direction: column;
+  overflow: scroll;
+  max-height: 122px; }
 
 .taskbutton {
   width: 14px;
@@ -302,6 +309,34 @@ body {
 
 .taskbutton:focus {
   background-color: white; }
+
+.event {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin-bottom: 3px; }
+
+.eventitem {
+  margin-left: 3px;
+  white-space: nowrap; }
+
+.eventdiv {
+  display: flex;
+  width: 71px;
+  overflow: hidden; }
+
+.eventcenter {
+  width: auto !important;
+  overflow: scroll !important;
+  justify-content: center;
+  align-items: center; }
+
+.eventleft {
+  justify-content: flex-start; }
+
+.eventright {
+  justify-content: flex-end; }
 
 #leftbar {
   background-color: black;
@@ -352,7 +387,7 @@ body {
 :root {
   /* colors */
   --background: #0e0e0e;
-  --foreground: #F1F1F1;
+  --foreground: #000000;
   /* fonts */
   --font-family: Roboto, sans-serif;
   --base-font-size: 18px;

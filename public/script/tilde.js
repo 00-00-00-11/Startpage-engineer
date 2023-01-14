@@ -221,7 +221,7 @@ const CONFIG = {
   /**
    * Dynamic overlay background colors when command domains are matched.
    */
-  colors: true,
+  colors: false,
 
   /**
    * Reverse color theme
@@ -780,8 +780,8 @@ class Form {
 
   reverse() {
     if (this._reverseColors) {
-      document.documentElement.style.setProperty('--background', '#F1F1F1');
-      document.documentElement.style.setProperty('--foreground', '#0e0e0e');
+      //document.documentElement.style.setProperty('--background', '#F1F1F1');
+      //document.documentElement.style.setProperty('--foreground', '#0e0e0e');
     }
   }
 

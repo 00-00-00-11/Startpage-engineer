@@ -35,9 +35,29 @@ class celestial{
     this.visible = visible;
   }
 }
+function createEvent(description, start, end) {
+    let strt = new Date(start); let e = new Date(end);
+    let strt_pst = strt.getHours() <= 12? " AM" : " PM";
+    let e_pst = e.getHours() <= 12? " AM" : " PM";
+    strt = formatTimeFromDate(strt); e = formatTimeFromDate(e);
+    strt = strt.substring(0, strt.length-3); e = e.substring(0, e.length-3);
+    strt += strt_pst; e += e_pst;
+    return `<div class="event">
+                        <div style="flex-grow:0; flex-shrink:1; justify-content:flex-start;" class="flex">
+                            <p class="eventstart eventitem"> ${strt} </p>
+                        </div>
+                        <div class= "center" style="flex-grow:1; flex-shrink:1; justify-content:center;" >
+                            <p class="eventlabel eventitem">${description} </p>
+                        </div>
+                        <div style="flex-grow:0; flex-shrink:1;justify-content:flex-end;" class= "flex">
+                            <p class="eventduration eventitem"> ${e}</p>
+                        </div>
+                    </div>`;
+}
 
 function button(id){
     console.log(id);
+    socket.emit("task_remove", id);
     document.getElementById(id).parentElement.remove();
 }
 function createTaskHTML(taskname, id){
@@ -70,14 +90,20 @@ function initDate(date){
   document.getElementById("display_date").innerHTML = month + "." + day + "." + year;
   return date;
 }
-
+function formatTimeFromDate(date) { 
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var seconds = date.getSeconds();
+    if(hours != 12) hours %= 12;
+    return formatTime(hours, minutes, seconds);
+}
 function formatTime(hours,minutes,seconds){
     var time = [hours,minutes,seconds];
     var timestring = "";
 
     for(var i = 0; i < time.length; i++){
         elstring = time[i].toString();
-        if(elstring.length < 2 && i != 0) elstring = "0" + elstring;
+        if(elstring.length < 2) elstring = "0" + elstring;
         timestring += elstring + ":" 
     }
     timestring = timestring.substring(0, timestring.length-1);
@@ -85,12 +111,8 @@ function formatTime(hours,minutes,seconds){
 }
 
 function initClock(date){
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var seconds = date.getSeconds();
-  hours %= 12;
 
-  document.getElementById("time").innerHTML = formatTime(hours,minutes,seconds);
+  document.getElementById("time").innerHTML = formatTimeFromDate(date);
 }
 
 function adjustCelestialToTOD(timeofdaybool){
@@ -117,8 +139,11 @@ function convertToDec(date){
 
 
 function initCPS(current, ssdate, srdate){
-  
-  if((  current.getHours() < ssdate.getHours()  || (current.getHours() == ssdate.getHours() && current.getMinutes() > ssdate.getMinutes())) &&   current.getHours() >= srdate.getHours()  ) 
+  var sameHourMoreMinutes =  (current.getHours() == ssdate.getHours() && current.getMinutes() > ssdate.getMinutes());
+  var strictlyBeforeSunset = current.getHours() < ssdate.getHours() ;
+  var afterSunrise =   current.getHours() >= srdate.getHours();
+  console.log(afterSunrise);
+  if((strictlyBeforeSunset && !sameHourMoreMinutes) && afterSunrise)   
     timeOfDay = true;
   else
     timeOfDay = false;
@@ -171,10 +196,9 @@ socket.on("cpuType", (value) => {
 socket.on("sunset-sunrise",(value)=>{
   if(SunriseSunsetListed == false){
       sunrise = new Date(value[1]); sunset = new Date(value[0]);
-      console.log(value[1]);
-      var val = formatTime(sunrise.getHours() ,sunrise.getMinutes(), sunrise.getSeconds());
-      document.getElementById("sunset-time").innerHTML +=  formatTime(sunset.getHours() ,sunset.getMinutes(), sunset.getSeconds());
-      document.getElementById("sunrise-time").innerHTML += val;
+      //console.log(formatTimeFromDate(sunset));
+      document.getElementById("sunset-time").innerHTML +=  formatTimeFromDate(sunset);
+      document.getElementById("sunrise-time").innerHTML += formatTimeFromDate(sunrise);
       SunriseSunsetListed = true;
       initCPS(today,sunset,sunrise);
   } 
@@ -229,3 +253,17 @@ socket.on("tasks", tasklist => {
     });
     document.getElementById("taskslist").innerHTML = prio4 + prio3 + prio2 + prio1;    
 });
+socket.on("events", events => {
+    if(!events || events.length == 0) {
+    } else{
+        document.getElementById("eventslist").innerHTML = "";    
+        events.forEach(evnt => {
+            let start = evnt.start.dateTime;
+            let end = evnt.end.dateTime;
+            let evnthtml = createEvent(evnt.summary, start, end);
+            console.log(end);
+            document.getElementById("eventslist").innerHTML += evnthtml;    
+       });
+    }
+});
+

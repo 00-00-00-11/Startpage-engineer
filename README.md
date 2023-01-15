@@ -10,7 +10,7 @@ My initial goal with my own startpage was to create a non-functional version of 
 
 The webpage integrates tilde functionality from the [tilde enhanced project](https://github.com/ozencb/tilde-enhanced). This provides a quick way to search for things or launch your favorite websites. Typing anything while the startpage is open will bring up this menu and deleting everything or pressing "Escape" will close it. You can search the typed text on a search engine by pressing "Enter". The default search engine is DuckDuckGo, but this can be changed in the public/script/tilde.js file. You can also add tags to search specific websites. The image above would search YouTube for "Ludwig" once the user presses "Enter". More information on tilde functionality can be found on the [tilde enhanced github](https://github.com/ozencb/tilde-enhanced) itself.
 
-![Alt text](images/topleft.png?raw=true "topleft")
+![Alt text](images/topleft.gif?raw=true "topleft")
 
 I don't even have a name for this part of the webpage, but it gets the current date and the username you have on your operating system and displays them. The "Running Precortex Checks..." and other text messages are purely aesthetic and aren't connected to an active feature in anyway. The exception is "Cortex Usage" which will display "USAGE HIGH" if your CPU usage is greater than 75%, "USAGE NORMAL" if CPU usage is greater than 50%, and "USAGE LOW" otherwise. 
 

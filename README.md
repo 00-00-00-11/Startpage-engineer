@@ -1,5 +1,5 @@
 # Over-Engineered Startpage
-![Alt text](images/startpage.png?raw=true "Startpage")
+![Alt text](images/startpage.gif?raw=true "Startpage")
 
 A startpage is a web page meant to replace the "Home" and/or "New Tab" page of your web browser. For many people, this is simply google.com. However, there is a [sizeable online community][reddit] dedicated to building custom startpages. A custom startpage is not only built for aesthetics, as users often add functionality by providing links to their most visited websites, local weather data, Spotify music players, etc. 
 

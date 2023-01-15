@@ -15,7 +15,7 @@ The webpage integrates tilde functionality from the [tilde enhanced project](htt
 
 I don't even have a name for this part of the webpage, but it gets the current date and the username you have on your operating system and displays them. The "Running Precortex Checks..." and other text messages are purely aesthetic and aren't connected to an active feature in anyway. The exception is "Cortex Usage" which will display "USAGE HIGH" if your CPU usage is greater than 75%, "USAGE NORMAL" if CPU usage is greater than 50%, and "USAGE LOW" otherwise. 
 
-![Alt text](images/cortex_analysis.png?raw=true "cortex")
+![Alt text](https://media4.giphy.com/media/l7f7lLZAmAp06U2Dg5/giphy.gif?cid=790b7611bd3bdac4e9d484a78dd3f26ad2dfb9c05a2a8ded&rid=giphy.gif&ct=g)
 
 The Cortex Analysis Modules graphs your CPU usage with the [Google Charts API](https://developers.google.com/chart/). It also displays the current usage, as well as the make and model of your CPU.
 

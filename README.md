@@ -6,11 +6,12 @@ A startpage is a web page meant to replace the "Home" and/or "New Tab" page of y
 My initial goal with my own startpage was to create a non-functional version of this [concept image](https://www.reddit.com/r/startpages/comments/bxabnv/concept_cyberpunk_scifi_startpage/). I really wished it was more than just a concept but was intimidated by the idea of implementing the functionality. As I began working on it, I couldn't help but think about how much cooler the project would be if it were functional and began implmenting a few of the features (detailed in the next section). I soon gained momentum and began adding more features. I even began to deviate a bit from the concept, as I wanted a feature it didn't have or a thought a feature would be better if the startpage design were different. I honestly think I got a bit carried away (a node.js server feels like overkill for this sort of thing), but it was fun and I'm happy with the result.
 
 ## Features
-<img src="images/topleft.gif" alt="topleft" width="320px;" height="215px;">
+
+
 
 The webpage integrates tilde functionality from the [tilde enhanced project](https://github.com/ozencb/tilde-enhanced). This provides a quick way to search for things or launch your favorite websites. Typing anything while the startpage is open will bring up this menu and deleting everything or pressing "Escape" will close it. You can search the typed text on a search engine by pressing "Enter". The default search engine is DuckDuckGo, but this can be changed in the public/script/tilde.js file. You can also add tags to search specific websites. The image above would search YouTube for "Ludwig" once the user presses "Enter". More information on tilde functionality can be found on the [tilde enhanced github](https://github.com/ozencb/tilde-enhanced) itself.
 
-![Alt text](images/topleft.gif "topleft")
+![Alt text](https://media.giphy.com/media/4EnnF5wosZynf7oQjE/giphy.gif)
 
 I don't even have a name for this part of the webpage, but it gets the current date and the username you have on your operating system and displays them. The "Running Precortex Checks..." and other text messages are purely aesthetic and aren't connected to an active feature in anyway. The exception is "Cortex Usage" which will display "USAGE HIGH" if your CPU usage is greater than 75%, "USAGE NORMAL" if CPU usage is greater than 50%, and "USAGE LOW" otherwise. 
 

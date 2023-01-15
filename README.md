@@ -12,7 +12,7 @@ The webpage integrates tilde functionality from the [tilde enhanced project](htt
 
 ![Alt text](images/topleft.png?raw=true "topleft")
 
-There's not much to this part of the webpage (I don't even have a name for it). It gets the current date and the username you have on your operating system and displays them. The "Running Precortex Checks..." and other text messages are purely aesthetic and aren't connected to an active feature in anyway. The exception is "Cortex Usage" which will display "USAGE HIGH" if your CPU usage is greater than 75%, "USAGE NORMAL" if CPU usage is greater than 50%, and "USAGE LOW" otherwise. 
+I don't even have a name for this part of the webpage, but it gets the current date and the username you have on your operating system and displays them. The "Running Precortex Checks..." and other text messages are purely aesthetic and aren't connected to an active feature in anyway. The exception is "Cortex Usage" which will display "USAGE HIGH" if your CPU usage is greater than 75%, "USAGE NORMAL" if CPU usage is greater than 50%, and "USAGE LOW" otherwise. 
 
 ![Alt text](images/cortex_analysis.png?raw=true "cortex")
 

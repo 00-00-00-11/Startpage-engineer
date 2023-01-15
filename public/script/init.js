@@ -243,7 +243,7 @@ socket.on("weatherData", resp => {
     temp = toCels(resp.main.temp);
 });
 socket.on("username", username => {
-    document.getElementById("username").innerHTML = username;    
+    document.getElementById("username").innerHTML = "WELCOME, " + username.toUpperCase() + ".";    
 });
 socket.on("tasks", tasklist => {
     let prio1 = ""; let prio2 = ""; let prio3 = ""; let prio4 = "";

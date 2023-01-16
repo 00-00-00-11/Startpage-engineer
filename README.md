@@ -38,14 +38,20 @@ The Scheduled Humor Module is pretty simple: it'll pull a random xkcd comic when
 ![Alt text](images/hcr.png?raw=true "completion requirements")
 
 The Human Completion Requirements Module is divided into two sections: the tasks and iternary section.
+
 ![Alt text](images/tasks.png?raw=true "todolist")
 
-The tasks section is a small todolist. It's integrated with [Todoist](https://todoist.com/), a commonly used todolist app. It displays the active tasks from that app, with higher priority tasks showing up first. There's no way to add tasks from the webpage just yet, but you can remove tasks and they should update on your Todoist account.
+The tasks section is a small todolist. It's integrated with [Todoist](https://todoist.com/), a commonly used todolist app. 
+
+![Alt text](images/todoist.png?raw=true "todoist")
+
+It displays the active tasks from that app, with higher priority tasks showing up first. There's no way to add tasks from the webpage just yet, but you can remove tasks and they should update on your Todoist account.
 
 ![Alt text](images/itinerary.png?raw=true "calendar")
 
 The itinerary section integrates with [Google Calendar](https://calendar.google.com) to get your schedule for the day. The start time and end time of each event are displyed on the left and right hand side respectively, while the event name is in the center.
 
+![Alt text](images/gcal.png?raw=true "gcal")
 
 ## Installation
 You'll first need to download the startpage itself. If you're familiar with Git you can git clone, but if you aren't you can click the big green "Code" button at the top of this page and then click "Download Zip".

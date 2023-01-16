@@ -19,10 +19,9 @@ I don't even have a name for this part of the webpage, but it gets the current d
 
 The Cortex Analysis Modules graphs your CPU usage with the [Google Charts API](https://developers.google.com/chart/). It also displays the current usage, as well as the make and model of your CPU.
 
-![Alt text](images/cpm.png?raw=true "celestial1")
-![Alt text](images/cpm2.png?raw=true "celestial2")
+![Alt text](https://media2.giphy.com/media/izN3R9NkWgOiovf6Oa/giphy.gif?cid=790b76110429800893e57ab8467adb4406068a3f838cb6c1&rid=giphy.gif&ct=g)
 
-The Celestial Position Module shows you how much day or night you have left with a little image of the sun/moon that move in a parabolic arc as time progresses. It will also display the estimated sunset/sunrise time for your current location.
+The Celestial Position Module shows you how much day or night you have left with a little image of the sun/moon that move in a parabolic arc as time progresses. It will also display the estimated sunset/sunrise time for your current location. If you noticed the moon was a lot slower than the sun in the gif above, that's because it was recorded in January and nighttime was much, much longer than day time.
 
 ![Alt text](images/prm.png?raw=true "planetary report")
 
